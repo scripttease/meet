@@ -1,0 +1,39 @@
+LineLength:
+  Max: 80
+
+# Use other complexity metrics instead of num lines
+Metrics/MethodLength:
+  Enabled: false
+
+# Comments are optional
+Documentation:
+  Enabled: false
+
+# Allow use of empty lines to visually group code into paragraphs
+Style/EmptyLinesAroundBlockBody:
+  Enabled: true
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/EmptyLinesAroundMethodBody:
+  Enabled: true
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+# See https://github.com/reevoo/reevoocop/issues/10
+Style/ModuleFunction:
+  Enabled: false
+
+# Always use double quoted strings
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Trailing commas make cleaner git diffs and easier sorting
+#
+Style/TrailingCommaInLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
