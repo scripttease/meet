@@ -5,11 +5,14 @@ help:
 
 
 start: ## Run the app
-	bundle exec rackup
+	@echo ""
+	@cat docs/meet.txt
+	@echo ""
+	bundle exec shotgun --port 4000
 
 
 test: ## Run the tests
-	bundle exec rspec
+	time bundle exec rspec
 
 
 lint: ## Run the style linters

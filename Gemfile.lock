@@ -9,6 +9,8 @@ GEM
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     rainbow (2.1.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -30,6 +32,8 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    shotgun (0.9.1)
+      rack (>= 1.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -41,8 +45,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rspec (~> 3.5)
-  rubocop (~> 0.46.0)
+  rack-test
+  rspec
+  rubocop
+  shotgun
   sinatra (~> 1.4)
 
 BUNDLED WITH

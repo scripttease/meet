@@ -1,0 +1,1 @@
+Sinatra app dep injection: http://stackoverflow.com/a/20726197

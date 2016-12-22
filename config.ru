@@ -1,16 +1,6 @@
 # frozen_string_literal: true
 
-puts "
-  ███╗   ███╗███████╗███████╗████████╗██╗
-  ████╗ ████║██╔════╝██╔════╝╚══██╔══╝██║
-  ██╔████╔██║█████╗  █████╗     ██║   ██║
-  ██║╚██╔╝██║██╔══╝  ██╔══╝     ██║   ╚═╝
-  ██║ ╚═╝ ██║███████╗███████╗   ██║   ██╗
-  ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝   ╚═╝
-                                       
-"
-
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require "web/server"
+require "web/router"
 
-run MeetServer
+run MeetRouter
