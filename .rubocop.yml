@@ -37,3 +37,7 @@ Style/TrailingCommaInLiteral:
 Style/TrailingCommaInArguments:
   Enabled: true
   EnforcedStyleForMultiline: comma
+
+# Group gem logically. That doesn't mean alphabetical order.
+Bundler/OrderedGems:
+  Enabled: false
