@@ -10,3 +10,14 @@
   ██║ ╚═╝ ██║███████╗███████╗   ██║   ██╗
   ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝   ╚═╝
 ```
+
+# Usage
+
+First install Docker and Docker Compose.
+
+```sh
+make            # Print help
+make start      # Start the app
+make test       # Run the tests
+make lint       # Run the linter
+```
