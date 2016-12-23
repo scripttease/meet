@@ -12,6 +12,7 @@ start: ## Run the app
 
 
 test: ## Run the tests
+	@# See ./.rspec and ./spec_helper.rb for additional test configuration
 	time bundle exec rspec
 
 
