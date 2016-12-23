@@ -4,5 +4,5 @@ machine:
 
 test:
   override:
-    - make lint
-    - make test
+    - bundle exec rspec
+    - bundle exec rubocop --display-cop-names --extra-details --display-style-guide
