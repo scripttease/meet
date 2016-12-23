@@ -1,12 +1,15 @@
 # Start with the base ruby image
 From ruby:2.3.0-alpine
 
+# Install C dependencies for postgres client gem
+RUN apk update && apk add build-base postgresql-dev
+
 # Install ruby app dependencies
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 COPY Gemfile* $APP_HOME/
-RUN bundle install
+RUN gem install bundler && bundle install
 
 # Add application source
 COPY . $APP_HOME

@@ -1,3 +1,3 @@
 --color
 --require ./spec_helper
---pattern {web,lib}/**/*spec.rb
+--pattern {web,lib,db}/**/*spec.rb
