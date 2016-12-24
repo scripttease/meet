@@ -18,8 +18,7 @@ First install Docker and Docker Compose.
 ```sh
 make                  # Print help
 docker-compose build  # Build the docker images
-docker-compose up     # Run the app in docker
-make start            # Start the app
-make test             # Run the tests
+docker-compose up     # Run the app in docker
+make test             # Run the tests
 make lint             # Run the linter
 ```
