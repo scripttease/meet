@@ -3,6 +3,9 @@
 # Include project dir in load path
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+# Set env
+ENV["RACK_ENV"] = "test"
+
 # Track test coverage
 require "simplecov"
 if ENV["CIRCLE_ARTIFACTS"]
@@ -10,6 +13,9 @@ if ENV["CIRCLE_ARTIFACTS"]
   SimpleCov.coverage_dir(dir)
 end
 SimpleCov.start
+
+require "database_cleaner"
+DatabaseCleaner[:sequel].strategy = :transaction
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -24,7 +30,6 @@ RSpec.configure do |config|
   config.filter_run_when_matching :focus
   config.example_status_persistence_file_path = "tmp/tests.txt"
   config.disable_monkey_patching!
-  config.warnings = true
   config.default_formatter = "doc" if config.files_to_run.one?
   config.order = :random
   Kernel.srand config.seed
