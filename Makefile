@@ -8,6 +8,10 @@ test: ## Run the tests
 	docker-compose run web_app \
 		rspec
 
+repl: ## Run the interactive shell
+	docker-compose run web_app \
+		ruby ./bin/repl.rb
+
 lint: ## Run the style linters
 	docker-compose run web_app \
 		rubocop \
@@ -45,6 +49,7 @@ db-migrate: ## Migrate database
 	help \
 	test \
 	lint \
+	repl \
 	lint-fix \
 	db-create \
 	db-drop \
