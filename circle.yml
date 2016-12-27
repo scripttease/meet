@@ -1,6 +1,14 @@
 machine:
   ruby:
     version: 2.3.0
+  environment:
+    DATABASE_POSTGRES_URL: "postgres://postgres@localhost/meet_test"
+
+dependencies:
+  override:
+    - bundle
+    - psql --user postgres --host localhost -c 'CREATE DATABASE meet_test'
+    - sequel --echo --migrate-directory db/migrations/ postgres://postgres@localhost/meet_test
 
 test:
   override:
