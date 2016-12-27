@@ -13,6 +13,9 @@ group :development, :test do
   # Reload app on each request in dev
   gem "shotgun"
 
+  # REPL and debugger
+  gem "pry-byebug"
+
   # Linter
   gem "rubocop"
 end

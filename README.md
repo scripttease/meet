@@ -21,4 +21,5 @@ docker-compose build  # Build the docker images
 docker-compose up     # Run the app in docker
 make test             # Run the tests
 make lint             # Run the linter
+make repl             # Start the interactive shell
 ```
