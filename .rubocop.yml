@@ -4,6 +4,8 @@ LineLength:
 # Use other complexity metrics instead of num lines
 Metrics/MethodLength:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: false
 
 # Comments are optional
 Documentation:
@@ -11,7 +13,7 @@ Documentation:
 
 # Allow use of empty lines to visually group code into paragraphs
 Style/EmptyLinesAroundBlockBody:
-  Enabled: true
+  Enabled: false
 Style/EmptyLinesAroundClassBody:
   Enabled: false
 Style/EmptyLinesAroundMethodBody:
@@ -40,4 +42,8 @@ Style/TrailingCommaInArguments:
 
 # Group gem logically. That doesn't mean alphabetical order.
 Bundler/OrderedGems:
+  Enabled: false
+
+# `self` can increase code clarify, which we value over tersness.
+Style/RedundantSelf:
   Enabled: false
