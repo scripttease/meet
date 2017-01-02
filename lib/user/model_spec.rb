@@ -9,12 +9,10 @@ RSpec.describe User do
     expect(a).to be_frozen
   end
 
-  describe "#attributes" do
-    it "returns all attributes" do
+  describe "#to_h" do
+    it "returns all attributes as a hash" do
       a = User.new(email: "hello")
-      expect(a.attributes).to eq(
-        email: "hello",
-      )
+      expect(a.to_h).to eq(email: "hello")
     end
   end
 
@@ -28,6 +26,12 @@ RSpec.describe User do
     it "can have unequal Users" do
       a = User.new(email: "hello")
       b = User.new(email: "world")
+      expect(a).not_to eq b
+    end
+
+    it "returns false for un-hashable objects" do
+      a = User.new(email: "hello")
+      b = "something"
       expect(a).not_to eq b
     end
   end

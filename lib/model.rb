@@ -18,11 +18,11 @@ class Model
     freeze
   end
 
-  def attributes
+  def to_h
     @@properties.map { |attribute| [attribute, self.send(attribute)] }.to_h
   end
 
   def ==(other)
-    self.attributes == other.attributes
+    other.respond_to?(:to_h) && self.to_h == other.to_h
   end
 end
