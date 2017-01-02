@@ -11,11 +11,19 @@ class Model
     attr_reader property
   end
 
-  def initialize(attributes)
+  def self.properties
+    @@properties
+  end
+
+  def initialize(attributes = {})
     @@properties.each do |property|
-      instance_variable_set("@#{property}", attributes.fetch(property))
+      instance_variable_set("@#{property}", attributes[property])
     end
     freeze
+  end
+
+  def with(attrs)
+    self.class.new(self.to_h.merge(attrs))
   end
 
   def to_h
