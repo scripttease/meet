@@ -7,8 +7,7 @@ help:
 
 
 test: ## Run the tests
-	docker-compose run web_app \
-		rspec
+	docker-compose run web_app rspec
 
 repl: ## Run the interactive shell
 	docker-compose run web_app \
