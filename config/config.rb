@@ -16,6 +16,15 @@ class AppConfig
       ENV.fetch("DATABASE_POSTGRES_URL")
     end
   end
+
+  def bcrypt_cost
+    case @env
+    when "development", "test"
+      1
+    else
+      10
+    end
+  end
 end
 
 MeetConfig = AppConfig.new

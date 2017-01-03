@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 
+# Web router library
 gem "sinatra", "~> 1.4"
+
+# Database ORM
 gem "sequel", "~> 4.41"
+
+# Postgres DB connector
 gem "pg", "~> 0.19"
+
+# Password hashing functions
+gem "bcrypt", "~> 3.1"
 
 group :development, :test do
   gem "rspec"            # Test framework

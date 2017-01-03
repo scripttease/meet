@@ -3,6 +3,8 @@
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), ".."))
 
+ENV["RACK_ENV"] = "development"
+
 require "pry"
 require "web/router"
 
