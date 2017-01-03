@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.3.0)
+    bcrypt (3.1.11)
     byebug (9.0.6)
     coderay (1.1.1)
     database_cleaner (1.5.3)
@@ -66,6 +67,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1)
   database_cleaner
   pg (~> 0.19)
   pry-byebug
