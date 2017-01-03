@@ -19,8 +19,8 @@ RSpec.describe User do
   describe ".with" do
     it "can be used to immutably modify properties" do
       user1 = User.new(id: 1, email: "hello")
-      user2 = user1.with(id: 2)
-      expect(user2.to_h).to eq(id: 2, email: "hello")
+      user2 = user1.with(email: "goodbye")
+      expect(user2.to_h).to eq(id: 1, email: "goodbye")
     end
   end
 
