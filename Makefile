@@ -3,8 +3,7 @@ SHELL:=/bin/bash
 PSQL=docker-compose run database psql --host database --user postgres
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 test: ## Run the tests
 	docker-compose run web_app rspec
@@ -23,6 +22,11 @@ lint: ## Run the style linters
 lint-fix: ## Automatically fix lint errors where possible
 	docker-compose run web_app \
 		rubocop --auto-correct
+
+
+#
+# Dev & test database management
+#
 
 db-drop: ## Drop database
 	$(PSQL) -c 'DROP DATABASE meet_dev'
@@ -43,6 +47,26 @@ db-migrate: ## Migrate database
 		postgres://postgres@database/meet_test
 
 
+#
+# Infrastructure provisioning and management
+#
+
+terraform-plan: .terraform/terraform.tfstate ## Dry-run of infrastruture changes for dev env
+	terraform plan -var-file=infrastruture/dev.tfvars infrastruture
+
+terraform-apply: .terraform/terraform.tfstate ## Apply infrastruture changes for dev env
+	terraform apply -var-file=infrastruture/dev.tfvars infrastruture
+
+terraform-destroy: .terraform/terraform.tfstate
+	terraform destroy -var-file=infrastruture/dev.tfvars infrastruture
+
+.terraform/terraform.tfstate:
+	terraform remote config \
+		-backend=s3 \
+		-backend-config="bucket=meet-app--terraform-state" \
+		-backend-config="key=meet-app--dev.tfstate" \
+		-backend-config="region=eu-west-2"
+
 # Inform Make of goals that are not files.
 .PHONY: \
 	help \
@@ -52,4 +76,7 @@ db-migrate: ## Migrate database
 	lint-fix \
 	db-create \
 	db-drop \
-	db-migrate
+	db-migrate \
+	terraform-plan \
+	terraform-apply \
+	terraform-destroy
