@@ -14,6 +14,7 @@
 # Usage
 
 First install Docker and Docker Compose.
+To work on infrastructure you must also install Terraform.
 
 ```sh
 make                  # Print help
