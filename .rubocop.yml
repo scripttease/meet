@@ -47,3 +47,6 @@ Bundler/OrderedGems:
 # `self` can increase code clarify, which we value over tersness.
 Style/RedundantSelf:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
