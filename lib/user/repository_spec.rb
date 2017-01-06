@@ -30,7 +30,7 @@ RSpec.describe UserRepository do
       expect(DB[:users].count).to eq 0
       expect(result).not_to be_successful
       expect(result.payload).to be_nil
-      expect(result.errors).to eq("email" => ["must be present"])
+      expect(result.errors).to eq("email" => "must be present")
     end
   end
 

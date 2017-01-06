@@ -27,6 +27,6 @@ class RepositoryInserter
 
   def handle_null_contraint_error(error)
     name = /null value in column "([^"]+)"/.match(error.message)[1]
-    Result.fail(name => ["must be present"])
+    Result.fail(name => "must be present")
   end
 end

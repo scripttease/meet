@@ -7,7 +7,7 @@
 # The `#then` method can be used to chain transformations...
 # It's an Either monad! :D
 #
-class Result
+module Result
   attr_reader :payload, :errors
 
   def self.success(payload = nil)
@@ -16,17 +16,6 @@ class Result
 
   def self.fail(errors = nil, payload = nil)
     Fail.new(errors, payload)
-  end
-
-  def initialize(successful:, payload: nil, errors: nil)
-    @successful = successful
-    @payload = payload
-    @errors = errors
-    freeze
-  end
-
-  def successful?
-    @successful
   end
 end
 
@@ -38,6 +27,7 @@ class Result::Success
 
   def initialize(payload)
     @payload = payload
+    freeze
   end
 
   def successful?
@@ -58,6 +48,7 @@ class Result::Fail
   def initialize(errors, payload)
     @payload = payload
     @errors = errors
+    freeze
   end
 
   def successful?
