@@ -2,9 +2,9 @@
 require "sinatra/base"
 
 require "web/static_page/router"
-require "web/user/router"
+require "web/registration/router"
 
 MeetRouter = Rack::URLMap.new(
-  "/users" => UserRouter,
+  "/users" => RegistrationRouter,
   "/" => StaticPageRouter,
 )
