@@ -10,7 +10,7 @@ class RepositoryInserter
   def insert(model)
     persisted_attrs = try_insert_new_row!(model)
     new_model = model.class.new(persisted_attrs)
-    Result.success(payload: new_model)
+    Result.success(new_model)
   rescue Sequel::NotNullConstraintViolation => e
     handle_null_contraint_error(e)
   end
@@ -27,6 +27,6 @@ class RepositoryInserter
 
   def handle_null_contraint_error(error)
     name = /null value in column "([^"]+)"/.match(error.message)[1]
-    Result.fail(errors: { name => ["must be present"] })
+    Result.fail(name => ["must be present"])
   end
 end
