@@ -9,7 +9,7 @@ require "lib/result"
 RSpec.describe RegistrationRouter do
   include Rack::Test::Methods
 
-  before { @app = RegistrationRouter }
+  before { @app = RegistrationRouter.new }
 
   attr_reader :app
 
@@ -34,7 +34,7 @@ RSpec.describe RegistrationRouter do
         RegistrationController,
         register_user: result,
       )
-      @app = RegistrationRouter.new(controller: ctrl)
+      @app = RegistrationRouter.new(nil, controller: ctrl)
       ctrl
     end
 
