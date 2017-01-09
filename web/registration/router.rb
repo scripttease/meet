@@ -5,7 +5,7 @@ require "lib/registration/controller"
 
 class RegistrationRouter < BaseRouter
 
-  def initialize(controller: RegistrationController.new)
+  def initialize(app = nil, controller: RegistrationController.new)
     super(app)
     @controller = controller
   end
