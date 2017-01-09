@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "lib/result"
+require "lib/hash_extra"
 
 class RepositoryInserter
   def initialize(dataset)

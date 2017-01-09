@@ -2,6 +2,7 @@
 
 require "web/base_router"
 require "lib/registration/controller"
+require "lib/user/model"
 
 class RegistrationRouter < BaseRouter
 
@@ -11,7 +12,8 @@ class RegistrationRouter < BaseRouter
   end
 
   get "/" do
-    "Hello from the registration router!"
+    @user = User.new
+    erb :"registration/form"
   end
 
   post "/" do
@@ -21,10 +23,12 @@ class RegistrationRouter < BaseRouter
     )
     if res.successful?
       status 201
-      "User created! #{res.payload.inspect}"
+      redirect "/"
     else
       status 400
-      "User unable to be created. #{res.errors.inspect}"
+      @user = User.new(res.payload)
+      @errors = res.errors
+      erb :"registration/form"
     end
   end
 end

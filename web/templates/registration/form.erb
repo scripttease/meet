@@ -1,0 +1,28 @@
+<h2>Register</h2>
+
+<% if @errors %>
+   <div>
+      Oops, some problems:
+      <ul>
+         <% @errors.each do |field, error| %>
+            <li><b><%= field.capitalize %></b>: <%= error %></li>
+         <% end %>
+      </ul>
+   </div>
+<% end %>
+
+<form action="" method="POST" accept-charset="utf-8">
+   <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="you@email.net" required value="<%= @user.email %>">
+   </div>
+
+   <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" pattern=".{7,}" required title="Must be at least 7 characters in length">
+   </div>
+
+   <div>
+      <input type="submit">
+   </div>
+</form>

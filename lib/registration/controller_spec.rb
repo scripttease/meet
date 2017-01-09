@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "test/repo_mock"
-require "lib/user/repository"
 require "lib/registration/controller"
 
 RSpec.describe "RegistrationController tests that hit the database" do
