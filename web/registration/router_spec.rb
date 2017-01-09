@@ -44,13 +44,16 @@ RSpec.describe RegistrationRouter do
       expect(ctrl).to receive(:register_user)
         .with(email: email, password: password)
       post("/", email: email, password: password)
-      expect(last_response.status).to eq 201
+      expect(last_response.status).to eq 302
     end
 
-    it "displays errors when registration fails" do
-      inject_ctrl(Result.fail(email: "is too short"))
+    it "displays errors and re-fills the form when registration fails" do
+      errors = { email: "is too short" }
+      payload = { email: "tim@web.net" }
+      inject_ctrl(Result.fail(errors, payload))
       post("/", email: email, password: password)
       expect(last_response.status).to eq 400
+      expect(last_response.body).to include("tim@web.net")
     end
   end
 end

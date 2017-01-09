@@ -2,6 +2,7 @@
 
 require "lib/result"
 require "lib/user/model"
+require "lib/user/repository"
 
 #
 # Given some the credentials for a new user, create the user!

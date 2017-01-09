@@ -5,6 +5,6 @@ require "web/static_page/router"
 require "web/registration/router"
 
 MeetRouter = Rack::URLMap.new(
-  "/users" => RegistrationRouter,
+  "/register" => RegistrationRouter,
   "/" => StaticPageRouter,
 )
