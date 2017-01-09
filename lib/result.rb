@@ -8,7 +8,6 @@
 # It's an Either monad! :D
 #
 module Result
-  attr_reader :payload, :errors
 
   def self.success(payload = nil)
     Success.new(payload)
