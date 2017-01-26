@@ -4,10 +4,16 @@ From ruby:2.3.0-alpine
 # Install C dependencies for postgres client gem
 RUN apk update && apk add build-base postgresql-dev
 
-# Install ruby app dependencies
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
+
+# Increase security by running app as non-root user
+ENV USER meet-app
+RUN adduser -D -u 1000 $USER && chown $USER  --recursive .
+USER $USER
+
+# Install ruby app dependencies
 COPY Gemfile* $APP_HOME/
 RUN gem install bundler && bundle install
 
